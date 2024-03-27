@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/3da1a747b2.js"></script>
+    <!-- Add Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <title>ExpenseTrack | Track and Manage Your Expenses with Ease</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><i class="fas fa-wallet"></i> ExpenseTrack</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+              >
+                <i class="fas fa-user"></i> Account
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="report.html">Reports</a>
+                <a class="dropdown-item" href="leader-board.html"
+                  >Leader Board</a
+                >
+                <a
+                  class="dropdown-item"
+                  onclick="paymentHandler()"
+                  id="buy-button"
+                  >Buy Premium</a
+                >
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" onclick="logoutHandler()"
+                  ><i class="fas fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </li>
+            <!-- <li class="nav-item d-none d-sm-block">
+              <a class="nav-link" href="#">|</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">My Expenses</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="browse my-5">
+      <div class="container">
+        <div class="row">
+          <!-- Sidebar -->
+          <div class="col-md-4 mb-3">
+            <h3>LeaderBoard</h3>
+          </div>
+
+          <!-- Main col -->
+          <div class="col-md-8">
+            <!-- Total Expenses of Top 5 Users -->
+            <div>
+              <div class="card mb-3" id="user-total-expenses">
+                <!-- <div class="row no-gutters">
+                  <div class="col-md-12 col-sm-12">
+                    <div class="card-body">
+                      <div class="row text-center">
+                        <div class="col-md-4 col-sm-4">
+                          <h5 class="card-text"># 1</h5>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                          <p class="card-text">John Doe</p>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                          <p class="card-text">Rs: 15,000</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+      integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Add Bootstrap JS (popper.js is required for some Bootstrap components) -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+    <script src="nav-links.js"></script>
+    <script src="leaderBoard.js"></script>
+  </body>
+</html>
