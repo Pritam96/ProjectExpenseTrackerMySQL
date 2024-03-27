@@ -17,25 +17,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
   getExpenses();
 });
 
-async function getCurrentUser() {
-  try {
-    const response = await axios.get("http://localhost:5000/api/user/getMe", {
-      headers: {
-        "Content-Type": "application/json;charset=UTF-8",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log("Current User:", response.data.data);
-    console.log("CURRENT USER FETCHED");
-    currentUser = response.data.data;
+// async function getCurrentUser() {
+//   try {
+//     const response = await axios.get("http://localhost:5000/api/user/getMe", {
+//       headers: {
+//         "Content-Type": "application/json;charset=UTF-8",
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     console.log("Current User:", response.data.data);
+//     console.log("CURRENT USER FETCHED");
+//     currentUser = response.data.data;
 
-    buyPremiumHideUnhide();
+//     buyPremiumHideUnhide();
 
-    return response.data.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     return response.data.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 async function getCategories() {
   try {
@@ -299,11 +299,6 @@ async function deleteExpense(expense) {
   } catch (error) {
     console.log(error);
   }
-}
-
-function logoutHandler() {
-  localStorage.removeItem("token");
-  window.location.replace("./login.html");
 }
 
 function loadPagination(pagination) {

@@ -22,6 +22,8 @@ async function getCurrentUser() {
     console.log("CURRENT USER FETCHED");
     currentUser = response.data.data;
 
+    if (currentUser.username) showLoggedInUsername(currentUser.username);
+
     buyPremiumHideUnhide();
 
     return response.data.data;
@@ -37,4 +39,14 @@ function buyPremiumHideUnhide() {
   } else {
     buyButton.hidden = false;
   }
+}
+
+function logoutHandler() {
+  localStorage.removeItem("token");
+  window.location.replace("./login.html");
+}
+
+function showLoggedInUsername(name) {
+  const displayUsernameSection = document.getElementById("username");
+  if (name) displayUsernameSection.innerText = " " + name;
 }
