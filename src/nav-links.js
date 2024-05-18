@@ -2,7 +2,7 @@ const token = localStorage.getItem("token");
 let currentUser;
 
 if (!token) {
-  alert("Token is missing");
+  alert("Token Expired! Please login again.");
   window.location.replace("./login.html");
 }
 

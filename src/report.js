@@ -106,46 +106,73 @@ function populateExpenses(expenses) {
     divCard.classList.add("card", "mb-3");
     expenseList.appendChild(divCard);
 
-    const divRow = document.createElement("div");
-    divRow.classList.add("row", "no-gutters");
-    divCard.appendChild(divRow);
+    const divCardBody = document.createElement("div");
+    divCardBody.classList.add("card-body", "row");
+    divCard.appendChild(divCardBody);
 
-    const divColInfo = document.createElement("div");
-    divColInfo.classList.add("col-md-12");
-    divRow.appendChild(divColInfo);
+    // column amount - column for expense amount
+    const divColExpenseAmount = document.createElement("div");
+    divColExpenseAmount.classList.add("col-4", "row", "m-auto");
+    divCardBody.appendChild(divColExpenseAmount);
 
-    const divCardBodyInfo = document.createElement("div");
-    divCardBodyInfo.classList.add("card-body");
-    divColInfo.appendChild(divCardBodyInfo);
+    // column amount > card-title
+    const h3CardTitle = document.createElement("h3");
+    h3CardTitle.classList.add("card-title", "col-auto");
+    h3CardTitle.innerText = `₹${expense.amount}`;
+    divColExpenseAmount.appendChild(h3CardTitle);
 
-    const hCardTitleAmount = document.createElement("h4");
-    hCardTitleAmount.classList.add("card-title");
-    hCardTitleAmount.innerText = `₹${expense.amount}`;
-    divCardBodyInfo.appendChild(hCardTitleAmount);
+    // column expense info - column for expense title, sub-expense, category, createdAt
+    const divColExpenseInfo = document.createElement("div");
+    divColExpenseInfo.classList.add("col-8");
+    divCardBody.appendChild(divColExpenseInfo);
 
-    const pCardSubtitleStatement = document.createElement("p");
-    pCardSubtitleStatement.classList.add("card-subtitle", "mb-2", "text-muted");
-    pCardSubtitleStatement.innerText = expense.statement;
-    divCardBodyInfo.appendChild(pCardSubtitleStatement);
+    // column expense info > row
+    const divRowExpenseInfo = document.createElement("div");
+    divRowExpenseInfo.classList.add("row", "mb-2");
+    divColExpenseInfo.appendChild(divRowExpenseInfo);
 
+    // column expense info > row > h4 card-subtitle - expense title
+    const h4ColCardSubTitle = document.createElement("h4");
+    h4ColCardSubTitle.classList.add(
+      "card-subtitle",
+      "mb-2",
+      "text-muted",
+      "col-12"
+    );
+    h4ColCardSubTitle.innerText = expense.statement;
+    divRowExpenseInfo.appendChild(h4ColCardSubTitle);
+
+    // column expense info > row > p card-text - sub-expense
     if (expense.subExpense) {
-      const pCardTextSubExpense = document.createElement("p");
-      pCardTextSubExpense.classList.add("card-text");
-      pCardTextSubExpense.innerText = expense.subExpense;
-      divCardBodyInfo.appendChild(pCardTextSubExpense);
+      const pCardText = document.createElement("p");
+      pCardText.classList.add("card-text", "col-12");
+      pCardText.innerText = expense.subExpense;
+      divRowExpenseInfo.appendChild(pCardText);
     }
+    // column expense info > row > div col
+    const divCol = document.createElement("div");
+    divCol.classList.add("col-12", "col-md-flex");
+    divRowExpenseInfo.appendChild(divCol);
 
-    const spanBadgeCreatedAt = document.createElement("span");
-    spanBadgeCreatedAt.classList.add("badge", "badge-dark", "mb-2", "mr-2");
-    spanBadgeCreatedAt.innerText = moment(expense.createdAt).format(
+    // column expense info > row > div col > span - category
+    const spanCategory = document.createElement("span");
+    spanCategory.classList.add("badge", "badge-success", "col-lg-auto");
+    spanCategory.innerText = expense.category.categoryName;
+    divCol.appendChild(spanCategory);
+
+    // column expense info > row > div col > span - createdAt
+    const spanCreateAt = document.createElement("span");
+    spanCreateAt.classList.add(
+      "badge",
+      "badge-dark",
+      "col-lg-auto",
+      "ml-lg-2",
+      "ml-md-0"
+    );
+    spanCreateAt.innerText = moment(expense.createdAt).format(
       "MMMM Do YYYY, h:mm:ss a"
     );
-    divCardBodyInfo.appendChild(spanBadgeCreatedAt);
-
-    const spanBadgeCategory = document.createElement("span");
-    spanBadgeCategory.classList.add("badge", "badge-success");
-    spanBadgeCategory.innerText = expense.category.categoryName;
-    divCardBodyInfo.appendChild(spanBadgeCategory);
+    divCol.appendChild(spanCreateAt);
   });
 }
 

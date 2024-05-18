@@ -43,7 +43,7 @@ exports.getExpenses = async (req, res, next) => {
   try {
     // Pagination
     const page = parseInt(req.query.page, 10) || 1;
-    const limit = parseInt(req.query.limit, 10) || 5;
+    const limit = parseInt(req.query.limit, 10) || 3;
     const offset = (page - 1) * limit;
 
     const { count, rows: expenses } = await Expense.findAndCountAll({
@@ -57,6 +57,7 @@ exports.getExpenses = async (req, res, next) => {
       ],
       limit,
       offset,
+      order: [["createdAt", "DESC"]],
     });
 
     // Pagination result
